@@ -112,6 +112,30 @@ g = stochastic_block_model(2., 3., [100,100])
 g = stochastic_block_model(3., 4., [100,100,100])
 @test  10.5 < mean(degree(g)) < 11.5
 
+n1=n2=1000
+n = n1+n2
+c11=10.; c22=10.; c12=c21=5.
+c = [[c11 c12]; [c21 c22]]
+g = stochastic_block_model(c, [n1,n2])
+@test nv(g) == n1+n2
+m11 = m22 = m12 = 0
+for e in edges(g)
+    i, j = src(e), dst(e)
+    i > j && error()
+    if i ∈ 1:n1 && j ∈ n1+1:n1+n2
+        m12 += 1
+    elseif i ∈ 1:n1 && j ∈ 1:n1
+        m11 += 1
+    elseif j ∈ n1+1:n1+n2 && j ∈ n1+1:n1+n2
+        m22 += 1
+    end
+end
+@test m11 + m12 + m22 == ne(g)
+@test  c11-2e-1 < 2m11/n1 < c11+2e-1
+@test  c22-2e-1 < 2m22/n2 < c22+2e-1
+@test  c12-2e-1 < m12/n1  < c12+2e-1
+@test  c21-2e-1 < m12/n2  < c21+2e-1
+
 function generate_nbp_sbm(numedges, sizes)
     density = 1
     # print(STDERR, "Generating communites with sizes: $sizes\n")
