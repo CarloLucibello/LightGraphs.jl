@@ -257,7 +257,7 @@ end
 
 size(g::SimpleGraph) = (nv(g), nv(g))
 """size(g,i) provides 1:nv or 2:nv else 1 """
-size(g::Graph,dim::Int) = (dim == 1 || dim == 2)? nv(g) : 1
+size(g::Graph,dim::Int) = (dim == 1 || dim == 2) ? nv(g) : 1
 
 """sum(g) provides the number of edges in the graph"""
 sum(g::SimpleGraph) = ne(g)

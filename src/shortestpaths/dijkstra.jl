@@ -49,7 +49,7 @@ function dijkstra_shortest_paths{T}(
         # info("Popped H - got $(hentry.vertex)")
         u = hentry.vertex
         for v in out_neighbors(g,u)
-            alt = (dists[u] == typemax(T))? typemax(T) : dists[u] + distmx[u,v]
+            alt = (dists[u] == typemax(T)) ? typemax(T) : dists[u] + distmx[u,v]
 
             if !visited[v]
                 dists[v] = alt

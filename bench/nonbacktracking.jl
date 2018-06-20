@@ -1,6 +1,6 @@
 using LightGraphs 
 
-sizesnbm1 = Int64[@allocated non_backtracking_matrix(CycleGraph(2^i))for i in 4:10]
+sizesnbm1 = Int64[@allocated non_backtracking_matrix(CycleGraph(2^i)) for i in 4:10]
 sizesnbm2 = Int64[@allocated Nonbacktracking(CycleGraph(2^i)) for i in 4:10]
 
 

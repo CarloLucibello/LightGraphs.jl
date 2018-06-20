@@ -525,7 +525,7 @@ function stochastic_block_model{T<:Real}(c::Matrix{T}, n::Vector{Int}; seed::Int
     for a=1:K
         ra = cum[a]+1:cum[a+1]
         for b=a:K
-            @assert a==b? c[a,b] <= n[b]-1 : c[a,b] <= n[b]   "Mean degree cannot be greater than available neighbors in the block."
+            @assert a==b ? c[a,b] <= n[b]-1 : c[a,b] <= n[b]   "Mean degree cannot be greater than available neighbors in the block."
 
             m = a==b ? div(n[a]*(n[a]-1),2) : n[a]*n[b]
             p = a==b ? n[a]*c[a,b] / (2m) : n[a]*c[a,b]/m

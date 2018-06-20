@@ -8,7 +8,7 @@ Note: This function is optimized for speed.
 """
 function adjacency_matrix(g::SimpleGraph, dir::Symbol=:out, T::DataType=Int)
     n_v = nv(g)
-    nz = ne(g) * (is_directed(g)? 1 : 2)
+    nz = ne(g) * (is_directed(g) ? 1 : 2)
     colpt = ones(Int, n_v + 1)
 
     if dir == :out

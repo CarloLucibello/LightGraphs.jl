@@ -22,6 +22,7 @@ function loadmat(matname)
     tic()
     try
         info = matrixdepot(matname, :get)
+    catch
     end
     A = matrixdepot(matname, :read)
     A = symmetrize(A)

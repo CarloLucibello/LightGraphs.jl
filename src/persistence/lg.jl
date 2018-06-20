@@ -83,7 +83,7 @@ Returns 1 (number of graphs written).
 """
 function savelg(io::IO, g::SimpleGraph, gname::String)
     # write header line
-    dir = is_directed(g)? "d" : "u"
+    dir = is_directed(g) ? "d" : "u"
     line = join([nv(g), ne(g), dir, gname], ",")
     write(io, "$line\n")
     # write edges
